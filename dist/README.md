@@ -4,6 +4,8 @@ This is simple modal plugin for your latest angular project. Very easy to setup 
 
 **>> IMPORTANT: Required angular 5 in your local dependency. Because file uses Renderer2 in the core.**
 
+[Demo](http://iamsubhojit.com/ngx-magic-modal/)
+
 ## Installation
 
 `npm install ngx-magic-modal`
