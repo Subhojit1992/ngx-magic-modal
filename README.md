@@ -1,27 +1,74 @@
-# MagicModal
+# NGX Magic Modal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This is simple modal plugin for your latest angular project. Very easy to setup and integrate to your angular project.
 
-## Development server
+**>> IMPORTANT: Required angular 5 in your local dependency. Because file uses Renderer2 in the core.**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+`npm install ngx-magic-modal`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+or 
 
-## Build
+`yarn add ngx-magic-modal`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+In your "AppModule" file add this plugin
 
-## Running unit tests
+``` TypeScript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+import { AppComponent } from './app.component';
+// ngx-magic modal added
+import { MagicModalModule } from 'ngx-magic-modal';
 
-## Running end-to-end tests
+@NgModule({
+  imports:      [ BrowserModule, FormsModule, MagicModalModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+Call the plugin from your component
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+app.component.html
+``` HTML
+<magic-modal [(visible)]="display">
+    <button (click)="closeDisplay();" style="position: absolute; top: 10px; right: 10px;">X</button>
+    Test One
+</magic-modal>
+<button (click)="changeDisplay();">modal1</button>
+```
+app.component.ts
+``` TypeScript
+import { Component } from '@angular/core';
 
-## Further help
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  display: boolean = false;
+
+  changeDisplay(){
+    this.display = true;
+  }
+
+  closeDisplay(){
+    this.display = false; 
+  }
+
+}
+```
+As per "display" property change boolean value change popup will toggle show hide state.
+
+## Version
+Current - v0.1.1
+
+## Note
+You feel free to contribute or find issue.
+
+### *Chanege the popup as per your application ui and do fun :)*
